@@ -15,13 +15,13 @@ class HomeState extends State<Home> {
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(-0.39817471446402214, 36.96075003863469),
     zoom: 14.4746,
   );
 
   static final CameraPosition _kLake = CameraPosition(
       bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
+      target: LatLng(-0.39817471446402214, 36.96075003863469),
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
 

@@ -3,6 +3,10 @@ import 'Navi.dart';
 
 void main() {
   runApp(
-    MaterialApp(home: Navi()),
+    MaterialApp(
+      home: Navi(),
+      debugShowCheckedModeBanner: false,
+    ),
+
   );
 }
