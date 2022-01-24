@@ -29,7 +29,7 @@ class HomeState extends State<Home> {
     LatLng ltPosition = LatLng(position.latitude, position.longitude);
 
     CameraPosition cameraPosition =
-        CameraPosition(target: ltPosition, zoom: 10);
+        CameraPosition(target: ltPosition, zoom: 15);
     // ignore: unused_local_variable
     newGoogleMapController
         ?.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
@@ -40,9 +40,9 @@ class HomeState extends State<Home> {
     zoom: 14.4746,
   );
 
-  final CameraPosition _kLake = CameraPosition(
+  final CameraPosition product = CameraPosition(
       bearing: 192.8334901395799,
-      target: LatLng(-0.39817471446402214, 36.96075003863469),
+      target: LatLng(0.11688149266607599, 36.39012525821078),
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
 
@@ -52,6 +52,9 @@ class HomeState extends State<Home> {
       body: GoogleMap(
         mapType: MapType.hybrid,
         initialCameraPosition: _kGooglePlex,
+        myLocationButtonEnabled: true,
+        zoomGesturesEnabled: true,
+        zoomControlsEnabled: false,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
           locatePosition();
@@ -59,27 +62,16 @@ class HomeState extends State<Home> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheLake,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
+        label: Text('Position!'),
+        icon: Icon(Icons.maps_home_work_sharp),
       ),
     );
   }
 
+  // ignore: unused_element
   Future<void> _goToTheLake() async {
     final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+    controller.animateCamera(CameraUpdate.newCameraPosition(product));
   }
 
-  double? latitude;
-  double? longitude;
-  void getLocation() async {
-    var position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    // ignore: unused_local_variable
-    var lastPosition = await Geolocator.getLastKnownPosition();
-
-    latitude = position.latitude;
-    longitude = position.longitude;
-    print(latitude);
-  }
 }
