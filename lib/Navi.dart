@@ -28,6 +28,7 @@ class _NaviState extends State<Navi> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: pages.elementAt(selectedIndex),
